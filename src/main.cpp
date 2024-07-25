@@ -25,10 +25,8 @@ extern int32_t restart_counter;
 
 void setup() {
   Serial.begin(115200);
-  initLeds();
   Serial.println("StartingSerial"); 
   WiFi.mode(WIFI_STA);
-  delay(10000);
 
   Serial.println("StartingNVS");
   nvsInit();
@@ -49,6 +47,7 @@ void setup() {
   internalUnmount();
 
   delay(100);
+
   externalMount();
 }
 

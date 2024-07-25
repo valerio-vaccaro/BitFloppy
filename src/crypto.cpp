@@ -77,8 +77,10 @@ void processStatus(void) {
         nvsCommit();
         nvsClose();
       }
+      ESP.restart();
     case STATUS_LOCKED:
       printStatus(status);
+      writeHelp();
       if (nvsOpen()) {
         nvsGetMnemonic();
         nvsGetPassphrase();
@@ -92,6 +94,7 @@ void processStatus(void) {
       break;
     case STATUS_UNLOCKED:
       printStatus(status);
+      writeHelp();
       if (nvsOpen()) {
         nvsGetMnemonic();
         nvsGetPassphrase();
@@ -120,8 +123,10 @@ void processStatus(void) {
         nvsCommit();
         nvsClose();
       }
+      ESP.restart();
     case STATUS_CUSTOM_LOCKED:
       printStatus(status);
+      writeHelp();
       if (nvsOpen()) {
         nvsGetMnemonic();
         nvsGetPassphrase();
@@ -135,6 +140,7 @@ void processStatus(void) {
       break;
     case STATUS_CUSTOM_UNLOCKED:
       printStatus(status);
+      writeHelp();
       if (nvsOpen()) {
         nvsGetMnemonic();
         nvsGetPassphrase();
