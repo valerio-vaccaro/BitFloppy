@@ -37,7 +37,34 @@ Plus 3 directories, bip44, bip49 and bip 84 with the following files:
 
 ## Actions
 
-TBD
+### Initialization
+
+You don't need to do anything, initialization is automatic and at the end of files generation you will see a Mass Strorage with all your files.
+
+Files are generated EVERY time you turn on the board so don't worry if you deleted or modified it, after a reboot you will have back all your files!
+
+### Unlock
+
+If you want to shows mnemonic, passphrase, xpriv keys and address private keys you just need to:
+
+- write a file with name `UNLOCK.txt`,
+- unmount the volume,
+- restart the board.
+
+The board will generate new files (e.g. the file with menmonic) and shows keys close to addresses.
+
+### Format
+
+If you want change the mnemonic you have to:
+
+- write a file with name `FORMAT.txt`,
+- write a file with name `MNEMONIC.txt` if you want a custom mnemonic or remove it if you dont want,
+- write a file with name `PASSPHRASE.txt` if you want a custom passphrase or remove it if you dont want,
+- write a file with name `NEWTWORK.txt` if you want a custom network or remove it if you want use testnet,
+- unmount the volume,
+- restart the board.
+
+The board will remove all previouse informations generate or load secrets.
 
 ## Supported hardware
 
@@ -47,3 +74,5 @@ Supported boards:
 ## Status
 
 This project is just a Proof-of-Concept, use only with testnet or signet funds!
+
+Are my funds safe? NO, PLEASE DON'T USE WITH REAL FUNDS.

@@ -133,9 +133,26 @@ void writeHelp(void) {
   mFile.println("ESP32MEMORY");
   mFile.println("-----------");
   mFile.println("");
+  mFile.println("Unlock");
   mFile.println("");
+  mFile.println("If you want to shows mnemonic, passphrase, xpriv keys and address private keys you just need to:");
+  mFile.println("- write a file with name UNLOCK.txt,");
+  mFile.println("- unmount the volume,");
+  mFile.println("- restart the board.");
+  mFile.println("The board will generate new files (e.g. the file with menmonic) and shows keys close to addresses.");
   mFile.println("");
+  mFile.println("-----------");
   mFile.println("");
+  mFile.println("Format");
+  mFile.println("");
+  mFile.println("If you want change the mnemonic you have to:");
+  mFile.println("- write a file with name FORMAT.txt,");
+  mFile.println("- write a file with name MNEMONIC.txt if you want a custom mnemonic or remove it if you dont want,");
+  mFile.println("- write a file with name PASSPHRASE.txt if you want a custom passphrase or remove it if you dont want,");
+  mFile.println("- write a file with name NEWTWORK.txt if you want a custom network or remove it if you want use testnet,");
+  mFile.println("- unmount the volume,");
+  mFile.println("- restart the board.");
+  mFile.println("The board will remove all previouse informations generate or load secrets.");
   mFile.close();
 }
 
