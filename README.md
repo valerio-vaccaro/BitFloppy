@@ -1,6 +1,4 @@
-# ESP32S3MEMORY
-
-SEARCHING FOR A BETTER NAME!
+# BitFloppy
 
 This is just a proof of concept for a simple hardware for key derivations (and maybe PSBT decoding/signing in future).
 
