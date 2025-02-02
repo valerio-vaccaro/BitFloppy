@@ -52,6 +52,7 @@ void processStatus(void) {
 
   checkFormat();
   checkUnlock();
+  checkPSBT();
   
   switch (status) {
     case STATUS_UNKNOWN:
@@ -106,6 +107,8 @@ void processStatus(void) {
         deriveBIP(84, true);
 
         writePreferences(mnemonic, passphrase, testnet);
+
+        signPSBT();
       }
       break;
     case STATUS_CUSTOM_EMPTY:
@@ -152,6 +155,8 @@ void processStatus(void) {
         deriveBIP(84, true);
 
         writePreferences(mnemonic, passphrase, testnet);
+
+        signPSBT();
       }
       break;
     case STATUS_FORMAT:

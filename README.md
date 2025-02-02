@@ -20,7 +20,7 @@ A board can be in one of the following status:
 
 ## Generated files
 
-The memory of the board contains the following files:
+The memory of the board can contains the following files:
 - mnemonic.txt, the menmonic used (this file is present only in unlocked status),
 - network.txt, the network used,
 - passphrase.txt, the passphrase used (this file is present only in unlocked status),
@@ -50,6 +50,18 @@ If you want to shows mnemonic, passphrase, xpriv keys and address private keys y
 - restart the board.
 
 The board will generate new files (e.g. the file with menmonic) and shows keys close to addresses.
+
+### Sign PSBT"
+
+If you want to sign a PSBT you just need to:
+
+- write the PSBT (in base64) in a file with name `PSBT.txt`,
+- unmount the volume,
+- restart the board.
+
+The board will generate new files `PSBT_signed.txt` with the signed PSBT.
+
+This action will UNLOCK the board!
 
 ### Format
 

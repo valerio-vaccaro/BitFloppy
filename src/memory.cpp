@@ -21,6 +21,7 @@ void log(String s) {
 
 void deriveBIP(int index, bool unlocked) {
   HDPrivateKey hd(mnemonic, passphrase);
+  // deriving
   String directory = "/bip" + String(index);
   String path = "m/" + String(index) + "'/";
   if (testnet) {
@@ -31,14 +32,33 @@ void deriveBIP(int index, bool unlocked) {
   path = path + "'/0'";
   log("Deriving " + path + " addresses!\n");
   HDPrivateKey account = hd.derive(path);
+  // xpriv
   File mFile = FFat.open(directory + "/xpriv.txt", FILE_WRITE, true);
   String xpriv = unlocked ? account.xprv() : "**********";
   mFile.println(xpriv);
   mFile.close();
+  // xpub
   mFile = FFat.open(directory + "/xpub.txt", FILE_WRITE, true);
   mFile.println(account.xpub());
   mFile.close();
   log("\t" + path + "\tXPUB " + account.xpub() + "\n");
+  // decriptor
+  String descriptor;
+  if (index == 44) descriptor = "pkh([";
+  else if (index == 49) descriptor = "sh(wsh([";
+  else if (index == 84) descriptor = "wpkh([";
+  else if (index == 86) descriptor = "tr([";
+  else descriptor = "([";
+  descriptor += hd.fingerprint();
+  descriptor += path + "]";
+  descriptor += account.xpub();
+  descriptor += "/<0;1>/*)";
+  if (index == 49) descriptor += ")";
+  descriptor += String("#") + descriptorChecksum(descriptor);
+  mFile = FFat.open(directory + "/descriptor.txt", FILE_WRITE, true);
+  mFile.println(descriptor);
+  mFile.close();
+  // addresses
   String inpath;
   mFile = FFat.open(directory + "/addresses.txt", FILE_WRITE, true);
   for (int i=0; i<10; i++) {
@@ -130,7 +150,8 @@ bool readNetwork(void) {
 void writeHelp(void) {
   File mFile;
   mFile = FFat.open("/README.txt", FILE_WRITE, true);
-  mFile.println("ESP32MEMORY");
+  mFile.println("BitFloppy");
+  mFile.println(AUTO_VERSION);
   mFile.println("-----------");
   mFile.println("");
   mFile.println("Unlock");
@@ -140,6 +161,17 @@ void writeHelp(void) {
   mFile.println("- unmount the volume,");
   mFile.println("- restart the board.");
   mFile.println("The board will generate new files (e.g. the file with menmonic) and shows keys close to addresses.");
+  mFile.println("");
+  mFile.println("-----------");
+  mFile.println("");
+  mFile.println("Sign PSBT");
+  mFile.println("");
+  mFile.println("If you want to sign a PSBT you just need to:");
+  mFile.println("- write the PSBT (in base64) in a file with name PSBT.txt,");
+  mFile.println("- unmount the volume,");
+  mFile.println("- restart the board.");
+  mFile.println("The board will generate new files PSBT_signed.txt with the signed PSBT.");
+  mFile.println("This action will UNLOCK the board!");
   mFile.println("");
   mFile.println("-----------");
   mFile.println("");
@@ -154,6 +186,35 @@ void writeHelp(void) {
   mFile.println("- restart the board.");
   mFile.println("The board will remove all previouse informations generate or load secrets.");
   mFile.close();
+}
+
+void signPSBT() {
+  if (FFat.exists("/PSBT.txt")) {
+    File mFile;
+    mFile = FFat.open("/PSBT.txt", FILE_READ, false);
+    if (mFile) {
+      String psbt_str;
+      while (mFile.available()) {
+        psbt_str = psbt_str + mFile.readString();
+      }
+      PSBT psbt;
+      psbt.parseBase64(psbt_str);
+      if(!psbt){
+        log("Failed parsing PSBT\n");
+        return;
+      }
+      // sign
+      File rFile;
+      String filename = "/PSBT_signed.txt";
+      rFile = FFat.open(filename, FILE_WRITE, true);
+      HDPrivateKey hd(mnemonic, passphrase);
+      psbt.sign(hd);
+      // write
+      rFile.print(psbt.toBase64());
+      rFile.close();
+      mFile.close();
+    }
+  }
 }
 
 void writePreferences(String mnemonic, String passphrase, bool network) {
@@ -216,6 +277,24 @@ void checkUnlock(void) {
     }
     // remove file
     FFat.remove("/UNLOCK.txt");
+  }
+}
+
+void checkPSBT(void) {
+  if (FFat.exists("/PSBT.txt")) {
+    // set status
+    if (status == STATUS_LOCKED) {
+      status = STATUS_UNLOCKED;
+    } else if (status == STATUS_CUSTOM_LOCKED) {
+      status = STATUS_CUSTOM_UNLOCKED;
+    } else {
+      log("UNLOCK with wrong status!\n");
+    }
+    if (nvsOpen()) {
+      nvsPutStatus(status);
+      nvsCommit();
+      nvsClose();
+    }
   }
 }
 

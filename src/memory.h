@@ -3,6 +3,7 @@
 #include <Bitcoin.h>
 #include <FFat.h>
 #include <FS.h>
+#include <PSBT.h>
 #include <USB.h>
 #include <USBMSC.h>
 
@@ -13,6 +14,7 @@
 // internal primitives
 bool checkCustom(void);
 void checkFormat(void);
+void checkPSBT(void);
 void checkUnlock(void);
 void deleteAllFiles(bool custom);
 void deriveBIP(int index, bool unlocked);
@@ -26,6 +28,7 @@ const esp_partition_t* partition(void);
 String readMnemonic(void);
 String readPassphrase(void);
 bool readNetwork(void);
+void signPSBT();
 void writeHelp(void);
 void writePreferences(String mnemonic, String passphrase, bool network);
 
