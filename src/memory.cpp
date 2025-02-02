@@ -44,13 +44,15 @@ void deriveBIP(int index, bool unlocked) {
   log("\t" + path + "\tXPUB " + account.xpub() + "\n");
   // decriptor
   String descriptor;
+  String descriptorPath = path;
+  descriptorPath.remove(0, 1); 
   if (index == 44) descriptor = "pkh([";
   else if (index == 49) descriptor = "sh(wsh([";
   else if (index == 84) descriptor = "wpkh([";
   else if (index == 86) descriptor = "tr([";
   else descriptor = "([";
   descriptor += hd.fingerprint();
-  descriptor += path + "]";
+  descriptor += descriptorPath + "]";
   descriptor += account.xpub();
   descriptor += "/<0;1>/*)";
   if (index == 49) descriptor += ")";
