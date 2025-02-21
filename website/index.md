@@ -1,12 +1,8 @@
-# BitFloppy
-
-Bitcoin hardwarewallet in a 1,44 MB memory disk.
-
-## How it works?
+# How it works?
 
 Every time you restart the board the software will update status and perform needed actions, when these actions ends the board will show a 1,44 MB Mass Storage interface with various files.
 
-## Status
+# Status
 
 A board can be in one of the following status: 
 - UNKNOWN, board is new and never used, the firmware will set the status to EMPTY,
@@ -18,7 +14,7 @@ A board can be in one of the following status:
 - CUSTOM_UNLOCKED,  board derive all files including secrets and wait,
 - FORMAT, board will delete files and secret and move to EMPTY or CUSTOM_EMPTY.
 
-## Generated files
+# Generated files
 
 The memory of the board can contains the following files:
 - mnemonic.txt, the menmonic used (this file is present only in unlocked status),
@@ -33,15 +29,15 @@ Plus 3 directories, bip44, bip49 and bip 84 with the following files:
 - xpub.txt, extended public key,
 - xpriv.txt extended private key (or some *** if locked).
 
-## Actions
+# Actions
 
-### Initialization
+## Initialization
 
 You don't need to do anything, initialization is automatic and at the end of files generation you will see a Mass Strorage with all your files.
 
 Files are generated EVERY time you turn on the board so don't worry if you deleted or modified it, after a reboot you will have back all your files!
 
-### Unlock
+## Unlock
 
 If you want to shows mnemonic, passphrase, xpriv keys and address private keys you just need to:
 
@@ -51,7 +47,7 @@ If you want to shows mnemonic, passphrase, xpriv keys and address private keys y
 
 The board will generate new files (e.g. the file with menmonic) and shows keys close to addresses.
 
-### Sign PSBT"
+## Sign PSBT"
 
 If you want to sign a PSBT you just need to:
 
@@ -63,7 +59,7 @@ The board will generate new files `PSBT_signed.txt` with the signed PSBT.
 
 This action will UNLOCK the board!
 
-### Format
+## Format
 
 If you want change the mnemonic you have to:
 
@@ -76,12 +72,12 @@ If you want change the mnemonic you have to:
 
 The board will remove all previouse informations generate or load secrets.
 
-## Supported hardware
+# Supported hardware
 
 Supported boards:
 - Lolin S2 mini
 
-## Status
+# Status
 
 This project is just a Proof-of-Concept, use only with testnet or signet funds!
 
