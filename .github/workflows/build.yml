@@ -1,0 +1,39 @@
+name: BitFloppy Release
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version_step.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/pip
+            ~/.platformio/.cache
+          key: ${{ runner.os }}-pio
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      - name: Install PlatformIO Core
+        run: pip install --upgrade platformio
+      - name: Build PlatformIO Project
+        run: pio run
+      - name: Archive built binaries
+        uses: actions/upload-artifact@v4
+        with:
+          name: built-binaries-${{ github.sha }}
+          path: .pio/build/*/*.bin
+          if-no-files-found: error
+      - name: Archive bootapp binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: bootapp-binary-${{ github.sha }}
+          path: ~/.platformio/packages/framework-arduinoespressif32/tools/partitions/boot_app0.bin
+          if-no-files-found: error
