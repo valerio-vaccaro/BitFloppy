@@ -1,88 +1,140 @@
 # BitFloppy
 
-Bitcoin hardwarewallet in a 1,44 MB memory disk.
+A Bitcoin hardware wallet disguised as a 1.44 MB floppy disk using ESP32-S2 technology.
 
-## How it works?
+## 🎯 Overview
 
-Every time you restart the board the software will update status and perform needed actions, when these actions ends the board will show a 1,44 MB Mass Storage interface with various files.
+BitFloppy is a unique Bitcoin hardware wallet that presents itself as a 1.44 MB mass storage device. When connected to a computer, it appears as a floppy disk containing Bitcoin wallet files, making it inconspicuous and portable.
 
-## Status
+## 🚀 Quick Start
 
-A board can be in one of the following status: 
-- UNKNOWN, board is new and never used, the firmware will set the status to EMPTY,
-- EMPTY, board don't have secret material, secret material will be generated and status change to LOCKED,
-- LOCKED, board derive all files and wait,
-- UNLOCKED, board derive all files including secrets and wait,
-- CUSTOM_EMPTY, board don't have secret material, secret material will be generated using provided files and status change to CUSTOM_LOCKED,
-- CUSTOM_LOCKED, board derive all files and wait,
-- CUSTOM_UNLOCKED,  board derive all files including secrets and wait,
-- FORMAT, board will delete files and secret and move to EMPTY or CUSTOM_EMPTY.
+1. **Flash Firmware**: Use our [web-based flasher](website/flasher.html) or [command-line tools](FLASHING_README.md)
+2. **Connect Board**: Plug in your BitFloppy board via USB
+3. **Access Wallet**: The board appears as a 1.44 MB mass storage device
+4. **Use Wallet**: Interact with Bitcoin addresses and sign transactions
 
-## Generated files
+## 📁 Documentation
 
-The memory of the board can contains the following files:
-- mnemonic.txt, the menmonic used (this file is present only in unlocked status),
-- network.txt, the network used,
-- passphrase.txt, the passphrase used (this file is present only in unlocked status),
-- log.txt, complete log of all action perfomed,
-- README.txt, brief explanation similar to this file.
+- **[User Guide](website/index.md)** - Complete user manual and operations
+- **[Firmware Flashing](FLASHING_README.md)** - How to flash firmware to your board
+- **[Web Flasher](website/flasher.html)** - Browser-based firmware flashing tool
+- **[Flasher Documentation](website/FLASHER_README.md)** - Technical details about the web flasher
 
-Plus 3 directories, bip44, bip49 and bip 84 with the following files:
-- addresses.txt, list of derived addresses with derivation 0/*,
-- changes.txt, list of derived adddresses with derivation 1/*,
-- xpub.txt, extended public key,
-- xpriv.txt extended private key (or some *** if locked).
+## 🔧 How It Works
 
-## Actions
+Every time you restart the board, the software updates its status and performs needed actions. When complete, the board shows a 1.44 MB Mass Storage interface with various Bitcoin wallet files.
 
-### Initialization
+## 📊 Board Status
 
-You don't need to do anything, initialization is automatic and at the end of files generation you will see a Mass Strorage with all your files.
+A board can be in one of the following states:
 
-Files are generated EVERY time you turn on the board so don't worry if you deleted or modified it, after a reboot you will have back all your files!
+- **UNKNOWN** → Board is new and never used (auto-changes to EMPTY)
+- **EMPTY** → No secret material, will generate and change to LOCKED
+- **LOCKED** → Derives all files and waits (secure state)
+- **UNLOCKED** → Derives all files including secrets and waits
+- **CUSTOM_EMPTY** → Custom configuration, no secrets yet
+- **CUSTOM_LOCKED** → Custom configuration with locked secrets
+- **CUSTOM_UNLOCKED** → Custom configuration with unlocked secrets
+- **FORMAT** → Will delete all data and reset to EMPTY or CUSTOM_EMPTY
 
-### Unlock
+## 📄 Generated Files
 
-If you want to shows mnemonic, passphrase, xpriv keys and address private keys you just need to:
+The board creates the following files in the mass storage:
 
-- write a file with name `UNLOCK.txt`,
-- unmount the volume,
-- restart the board.
+### Core Files
+- `mnemonic.txt` - The mnemonic seed (only in unlocked status)
+- `network.txt` - The network used (mainnet/testnet/signet)
+- `passphrase.txt` - The passphrase used (only in unlocked status)
+- `log.txt` - Complete log of all actions performed
+- `README.txt` - Brief explanation of the wallet
 
-The board will generate new files (e.g. the file with menmonic) and shows keys close to addresses.
+### BIP Derivation Directories
+- **bip44/** - Legacy Bitcoin addresses
+- **bip49/** - SegWit wrapped addresses (P2SH-P2WPKH)
+- **bip84/** - Native SegWit addresses (Bech32)
 
-### Sign PSBT"
+Each directory contains:
+- `addresses.txt` - List of derived addresses (0/*)
+- `changes.txt` - List of change addresses (1/*)
+- `xpub.txt` - Extended public key
+- `xpriv.txt` - Extended private key (*** if locked)
 
-If you want to sign a PSBT you just need to:
+## ⚡ Operations
 
-- write the PSBT (in base64) in a file with name `PSBT.txt`,
-- unmount the volume,
-- restart the board.
+### 🔄 Initialization
+Automatic - no action required. Files are generated every time you turn on the board, so deleted files will be restored on reboot.
 
-The board will generate new files `PSBT_signed.txt` with the signed PSBT.
+### 🔓 Unlock
+To reveal secrets (mnemonic, passphrase, private keys):
+1. Create a file named `UNLOCK.txt`
+2. Unmount the volume
+3. Restart the board
+4. New files with secrets will be generated
 
-This action will UNLOCK the board!
+### ✍️ Sign PSBT
+To sign a Partially Signed Bitcoin Transaction:
+1. Write the PSBT (base64) in a file named `PSBT.txt`
+2. Unmount the volume
+3. Restart the board
+4. The board will generate `PSBT_signed.txt` with the signed PSBT
+5. **Note**: This action will UNLOCK the board!
 
-### Format
+### 🔄 Format
+To change the mnemonic or reset the wallet:
+1. Create a file named `FORMAT.txt`
+2. Optionally create `MNEMONIC.txt` with custom mnemonic
+3. Optionally create `PASSPHRASE.txt` with custom passphrase
+4. Optionally create `NETWORK.txt` with custom network
+5. Unmount the volume
+6. Restart the board
 
-If you want change the mnemonic you have to:
+## 🔧 Hardware Support
 
-- write a file with name `FORMAT.txt`,
-- write a file with name `MNEMONIC.txt` if you want a custom mnemonic or remove it if you dont want,
-- write a file with name `PASSPHRASE.txt` if you want a custom passphrase or remove it if you dont want,
-- write a file with name `NEWTWORK.txt` if you want a custom network or remove it if you want use testnet,
-- unmount the volume,
-- restart the board.
+- **Lolin S2 Mini** - Primary supported board
+- **ESP32-S2** - Compatible with other ESP32-S2 boards
 
-The board will remove all previouse informations generate or load secrets.
+## ⚠️ Security Notice
 
-## Supported hardware
+**This project is a Proof-of-Concept. Use only with testnet or signet funds!**
 
-Supported boards:
-- Lolin S2 mini
+**Are my funds safe? NO, PLEASE DON'T USE WITH REAL FUNDS.**
 
-## Status
+## 🛠️ Development
 
-This project is just a Proof-of-Concept, use only with testnet or signet funds!
+### Building from Source
+```bash
+# Install PlatformIO
+pip install platformio
 
-Are my funds safe? NO, PLEASE DON'T USE WITH REAL FUNDS.
+# Build firmware
+pio run
+
+# Flash firmware
+pio run --target upload --upload-port /dev/ttyUSB0
+```
+
+### Flashing Scripts
+- `flash_board.sh` - Interactive shell script
+- `flash_board.py` - Python command-line tool
+- `flash_pio.py` - PlatformIO integration
+
+See [FLASHING_README.md](FLASHING_README.md) for detailed instructions.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## 📞 Support
+
+For issues and questions:
+- Check the [User Guide](website/index.md)
+- Review the [Flashing Guide](FLASHING_README.md)
+- Check the [Web Flasher Documentation](website/FLASHER_README.md)
