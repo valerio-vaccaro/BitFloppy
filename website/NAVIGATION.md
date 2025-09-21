@@ -49,6 +49,9 @@ BitFloppy/
     ├── flashing.md             # Firmware flashing guide
     ├── sparrow.md              # Sparrow wallet integration
     ├── NAVIGATION.md           # This navigation guide
+    ├── images/                 # Board images and graphics
+    │   ├── README.md           # Image guidelines and information
+    │   └── lolin_s2_mini.jpg   # Lolin S2 Mini board image
     └── binaries/
         ├── README.md           # Firmware binaries documentation
         ├── firmware-list.json  # Firmware metadata

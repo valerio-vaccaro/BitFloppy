@@ -186,6 +186,13 @@ The scripts now provide:
 - Computer with USB port
 - Proper USB drivers installed
 
+### Supported Board
+
+![Lolin S2 Mini ESP32-S2 Board](images/lolin_s2_mini.jpg)
+*Note: Replace placeholder with actual board image*
+
+The primary supported board is the **Lolin S2 Mini**, a compact ESP32-S2 development board perfect for the BitFloppy project.
+
 ### Driver Installation
 
 #### Windows

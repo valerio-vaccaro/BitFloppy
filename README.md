@@ -89,6 +89,11 @@ To change the mnemonic or reset the wallet:
 
 ## 🔧 Hardware Support
 
+### Supported Board
+
+![Lolin S2 Mini ESP32-S2 Board](website/images/lolin_s2_mini.jpg)
+*Note: Replace placeholder with actual board image*
+
 - **Lolin S2 Mini** - Primary supported board
 - **ESP32-S2** - Compatible with other ESP32-S2 boards
 

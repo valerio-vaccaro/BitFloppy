@@ -111,9 +111,14 @@ If you want change the mnemonic you have to:
 
 The board will remove all previouse informations generate or load secrets.
 
-# Supported hardware
+# Supported Hardware
 
-Supported boards:
+## Lolin S2 Mini ESP32-S2 Board
+
+![Lolin S2 Mini ESP32-S2 Board](images/lolin_s2_mini.jpg)
+*Note: Replace placeholder with actual board image*
+
+**Supported boards:**
 - Lolin S2 mini
 
 ## 📚 Complete Documentation
