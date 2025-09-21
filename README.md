@@ -8,7 +8,7 @@ BitFloppy is a unique Bitcoin hardware wallet that presents itself as a 1.44 MB 
 
 ## 🚀 Quick Start
 
-1. **Flash Firmware**: Use our [web-based flasher](website/flasher.html) or [command-line tools](FLASHING_README.md)
+1. **Flash Firmware**: Use our [command-line tools](website/flashing.md)
 2. **Connect Board**: Plug in your BitFloppy board via USB
 3. **Access Wallet**: The board appears as a 1.44 MB mass storage device
 4. **Use Wallet**: Interact with Bitcoin addresses and sign transactions
@@ -16,9 +16,8 @@ BitFloppy is a unique Bitcoin hardware wallet that presents itself as a 1.44 MB 
 ## 📁 Documentation
 
 - **[User Guide](website/index.md)** - Complete user manual and operations
-- **[Firmware Flashing](FLASHING_README.md)** - How to flash firmware to your board
-- **[Web Flasher](website/flasher.html)** - Browser-based firmware flashing tool
-- **[Flasher Documentation](website/FLASHER_README.md)** - Technical details about the web flasher
+- **[Firmware Flashing](website/flashing.md)** - How to flash firmware to your board
+- **[Firmware Binaries](website/binaries/)** - Download pre-built firmware
 
 ## 🔧 How It Works
 
@@ -118,7 +117,7 @@ pio run --target upload --upload-port /dev/ttyUSB0
 - `flash_board.py` - Python command-line tool
 - `flash_pio.py` - PlatformIO integration
 
-See [FLASHING_README.md](FLASHING_README.md) for detailed instructions.
+See [website/flashing.md](website/flashing.md) for detailed instructions.
 
 ## 📄 License
 
@@ -136,5 +135,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 For issues and questions:
 - Check the [User Guide](website/index.md)
-- Review the [Flashing Guide](FLASHING_README.md)
-- Check the [Web Flasher Documentation](website/FLASHER_README.md)
+- Review the [Firmware Flashing Guide](website/flashing.md)

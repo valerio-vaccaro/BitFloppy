@@ -1,0 +1,41 @@
+{
+  "firmwares": [
+    {
+      "id": "lolin_s2_mini_v0.0.1",
+      "version": "v0.0.1",
+      "board": "Lolin S2 Mini",
+      "size": "880 KB",
+      "date": "2024-01-15",
+      "changelog": "Initial development version with basic functionality",
+      "category": "Lolin S2 Mini",
+      "recommended": true,
+      "baudrate": 115200,
+      "files": {
+        "firmware": {
+          "path": "0.0.1/lolin_s2_mini/firmware.bin",
+          "address": "0x10000"
+        },
+        "bootloader": {
+          "path": "0.0.1/lolin_s2_mini/bootloader.bin",
+          "address": "0x1000"
+        },
+        "partitions": {
+          "path": "0.0.1/lolin_s2_mini/partitions.bin",
+          "address": "0x8000"
+        },
+        "boot_app0": {
+          "path": "0.0.1/lolin_s2_mini/boot_app0.bin",
+          "address": "0xE000"
+        }
+      }
+    }
+  ],
+  "categories": [
+    {
+      "name": "Lolin S2 Mini",
+      "description": "Standard BitFloppy board"
+    }
+  ],
+  "lastUpdated": "2024-01-15",
+  "totalFirmwares": 1
+}

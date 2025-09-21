@@ -1,6 +1,45 @@
-# How it works?
+# BitFloppy Documentation Hub
 
-Every time you restart the board the software will update status and perform needed actions, when these actions ends the board will show a 1,44 MB Mass Storage interface with various files.
+> A Bitcoin hardware wallet disguised as a 1.44 MB floppy disk
+
+Welcome to the complete BitFloppy documentation! This is your central hub for all information about using, flashing, and developing with BitFloppy.
+
+## 🚀 Quick Start
+
+1. **[Flash Firmware](flashing.md)** - Get your board ready
+2. **[Download Firmware](binaries/)** - Get pre-built firmware
+3. **[User Guide](#user-guide)** - Learn how to use BitFloppy
+4. **[Sparrow Integration](sparrow.md)** - Use with Sparrow Wallet
+
+## 📚 Complete Documentation
+
+### Getting Started
+- **[Firmware Flashing](flashing.md)** - Complete guide to flashing firmware
+- **[Firmware Binaries](binaries/)** - Download pre-built firmware
+- **[Sparrow Wallet Integration](sparrow.md)** - Use with Sparrow Wallet
+
+### Advanced Usage
+- **[Command-Line Tools](../flash_board.py)** - Python flashing script
+- **[Shell Scripts](../flash_board.sh)** - Shell script wrapper
+- **[PlatformIO Integration](../flash_pio.py)** - Build from source
+
+### Development
+- **[Main Project](../README.md)** - Project overview and development
+- **[Source Code](../src/)** - C++ source code
+- **[PlatformIO Config](../platformio.ini)** - Build configuration
+
+## 📋 Quick Navigation
+
+- **[💾 Firmware Binaries](binaries/)** - Download pre-built firmware
+- **[🔧 Firmware Flashing](flashing.md)** - How to flash firmware to your board
+- **[🕊️ Sparrow Wallet Integration](sparrow.md)** - Use with Sparrow Wallet
+- **[🏠 Main Project](../README.md)** - Project overview and development information
+
+# User Guide
+
+## 🎯 How It Works
+
+Every time you restart the board, the software updates its status and performs needed actions. When complete, the board shows a 1.44 MB Mass Storage interface with various Bitcoin wallet files.
 
 # Status
 
@@ -77,8 +116,25 @@ The board will remove all previouse informations generate or load secrets.
 Supported boards:
 - Lolin S2 mini
 
-# Status
+## 📚 Complete Documentation
 
-This project is just a Proof-of-Concept, use only with testnet or signet funds!
+### Getting Started
+- **[Firmware Flashing](flashing.md)** - Complete guide to flashing firmware
+- **[Firmware Binaries](binaries/)** - Download pre-built firmware
+- **[Sparrow Wallet Integration](sparrow.md)** - Use with Sparrow Wallet
 
-Are my funds safe? NO, PLEASE DON'T USE WITH REAL FUNDS.
+### Advanced Usage
+- **[Command-Line Tools](../flash_board.py)** - Python flashing script
+- **[Shell Scripts](../flash_board.sh)** - Shell script wrapper
+- **[PlatformIO Integration](../flash_pio.py)** - Build from source
+
+### Development
+- **[Main Project](../README.md)** - Project overview and development
+- **[Source Code](../src/)** - C++ source code
+- **[PlatformIO Config](../platformio.ini)** - Build configuration
+
+## ⚠️ Security Notice
+
+**This project is a Proof-of-Concept. Use only with testnet or signet funds!**
+
+**Are my funds safe? NO, PLEASE DON'T USE WITH REAL FUNDS.**
