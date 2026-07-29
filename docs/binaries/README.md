@@ -55,11 +55,17 @@ binaries/
 └── firmware-list.json
 ```
 
-## Download Links
+## Download firmware
 
-The latest firmware binaries are automatically built and available from:
-- GitHub Releases: https://github.com/your-repo/BitFloppy/releases
-- CI/CD Artifacts: Built on every commit to main branch
+Every build on the `main` branch creates a downloadable firmware artifact for each supported board. Open the [Build BitFloppy firmware workflow](https://github.com/valerio-vaccaro/BitFloppy/actions/workflows/build.yml), select the latest successful run, then use the **Artifacts** section or the download link in the job summary.
+
+Each artifact includes the files needed by a flasher:
+
+- `0x1000_bootloader.bin`
+- `0x8000_partitions.bin`
+- `0xE000_boot_app0.bin`
+- `0x10000_firmware.bin`
+- `SHA256SUMS.txt`
 
 ## Verification
 
