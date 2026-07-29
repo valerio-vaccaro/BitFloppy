@@ -86,9 +86,20 @@ jobs:
             "  0x10000_firmware.bin" \
             > "$artifact_dir/README.txt"
       - name: Upload ${{ matrix.environment }} firmware
+        id: upload-firmware
         uses: actions/upload-artifact@v4
         with:
           name: bitfloppy-${{ matrix.environment }}-${{ github.sha }}
           path: dist/${{ matrix.environment }}
           if-no-files-found: error
-          retention-days: 30
+          retention-days: 90
+          compression-level: 0
+      - name: Add firmware download link to the build summary
+        run: |
+          {
+            echo "## BitFloppy firmware — ${{ matrix.environment }}"
+            echo
+            echo "[Download this firmware artifact](${{ steps.upload-firmware.outputs.artifact-url }})"
+            echo
+            echo "Includes the bootloader, partition table, boot app, application firmware, and SHA-256 checksums."
+          } >> "$GITHUB_STEP_SUMMARY"
