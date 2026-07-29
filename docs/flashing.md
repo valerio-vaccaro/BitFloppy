@@ -1,3 +1,9 @@
+---
+layout: default
+title: Flash firmware
+description: Flash BitFloppy firmware to a supported Lolin S2 Mini ESP32-S2 board.
+---
+
 # BitFloppy Board Flashing Guide
 
 This guide provides comprehensive instructions for flashing firmware to BitFloppy ESP32-S2 boards using multiple methods.

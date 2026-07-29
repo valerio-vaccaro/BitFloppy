@@ -1,3 +1,9 @@
+---
+layout: default
+title: Sparrow Wallet integration
+description: Set up BitFloppy with Sparrow Wallet and sign PSBTs offline.
+---
+
 # BitFloppy with Sparrow Wallet
 
 This guide explains how to use BitFloppy with Sparrow Wallet for Bitcoin transactions.
