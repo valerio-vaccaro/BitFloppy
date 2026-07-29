@@ -105,10 +105,6 @@ p { max-width: 70ch; }
 .panel h3 { margin-top: 0; }
 .panel p { margin-bottom: 0; font-size: .9rem; }
 
-.artwork-link { display: flex; align-items: center; gap: 1rem; margin: 3rem 0; padding: 1rem 1.25rem; color: var(--ink); background: #1f1d3a; border: 3px solid var(--ink); box-shadow: var(--pixel-shadow); font-weight: bold; text-decoration: none; }
-.artwork-link::before { content: "✦"; display: grid; place-items: center; flex: 0 0 2.2rem; height: 2.2rem; color: var(--paper); background: var(--orange); border: 2px solid var(--ink); animation: blink 1.3s steps(1, end) infinite; }
-.artwork-link:hover { color: var(--void); background: var(--yellow); }
-
 a { color: var(--blue); font-weight: bold; }
 code { padding: .1rem .3rem; color: var(--paper); background: var(--ink); }
 pre { overflow-x: auto; padding: 1rem; color: var(--ink); background: var(--void); border: 3px solid var(--ink); box-shadow: var(--pixel-shadow); }

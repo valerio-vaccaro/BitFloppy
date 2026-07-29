@@ -1,14 +1,14 @@
 ---
 layout: default
 title: Offline signer
-description: Learn how BitFloppy turns a Lolin S2 Mini board into an offline Bitcoin hardware wallet.
+description: BitFloppy is an offline Bitcoin signer that uses a simple, file-based workflow.
 ---
 
 <section class="hero">
   <div class="hero-copy">
     <p class="eyebrow">// BITCOIN HARDWARE WALLET</p>
     <h1>Wallet on a floppy.</h1>
-    <p>A tiny offline signer disguised as a classic 1.44 MB disk. Plug it in, move PSBT files, and keep the keys away from the network.</p>
+    <p>An offline Bitcoin signer with a simple file-based workflow. Move PSBT files by USB and keep signing keys off the network.</p>
     <p class="status-line">SYSTEM STATUS: READY<span class="cursor">_</span></p>
     <div class="button-row">
       <a class="pixel-button" href="flashing.html">FLASH FIRMWARE</a>
@@ -28,20 +28,18 @@ description: Learn how BitFloppy turns a Lolin S2 Mini board into an offline Bit
   <div class="panel-grid">
     <article class="panel">
       <h3>01. Flash it</h3>
-      <p>Install the firmware on a supported Lolin S2 Mini board.</p>
+      <p>Install BitFloppy on a supported Lolin S2 Mini.</p>
       <p><a href="flashing.html">Open flashing guide →</a></p>
     </article>
     <article class="panel">
       <h3>02. Connect it</h3>
-      <p>The board mounts as a familiar floppy-sized mass-storage drive.</p>
+      <p>Use the board as a small, familiar USB storage drive.</p>
       <p><a href="user-guide.html">Read the user guide →</a></p>
     </article>
     <article class="panel">
       <h3>03. Sign offline</h3>
-      <p>Move a PSBT to the drive, reboot, then import the signed result.</p>
+      <p>Copy a PSBT to the drive and retrieve the signed result.</p>
       <p><a href="sparrow.html">Set up Sparrow →</a></p>
     </article>
   </div>
 </section>
-
-<a class="artwork-link" href="https://gemini.google.com/share/ced1272e9f8f?skid=157f95c2-37d2-4c18-a283-8538492fca95" target="_blank" rel="noopener">OPEN THE ORIGINAL BITFLOPPY ARTWORK ↗</a>

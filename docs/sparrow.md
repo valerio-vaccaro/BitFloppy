@@ -1,19 +1,19 @@
 ---
 layout: default
 title: Sparrow Wallet integration
-description: Set up BitFloppy with Sparrow Wallet and sign PSBTs offline.
+description: Use BitFloppy with Sparrow Wallet to sign PSBTs offline.
 ---
 
 # BitFloppy with Sparrow Wallet
 
-This guide explains how to use BitFloppy with Sparrow Wallet for Bitcoin transactions.
+Use BitFloppy with Sparrow Wallet to prepare and sign PSBTs offline.
 
 ## 📋 Quick Navigation
 
-- **[🏠 Main Project](../README.md)** - Project overview and development information
-- **[👤 User Guide](index.md)** - Complete user manual and operations
-- **[🔧 Firmware Flashing](flashing.md)** - Command-line firmware flashing tools
-- **[💾 Firmware Binaries](binaries/)** - Download pre-built firmware
+- **[🏠 Main Project](../README.md)** - Project overview
+- **[👤 User Guide](user-guide.md)** - Device workflow and file states
+- **[🔧 Firmware Flashing](flashing.md)** - Firmware installation
+- **[💾 Firmware Binaries](binaries/)** - Pre-built firmware
 
 ## 🔗 Integration with Sparrow Wallet
 

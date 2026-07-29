@@ -1,19 +1,19 @@
 ---
 layout: default
 title: Flash firmware
-description: Flash BitFloppy firmware to a supported Lolin S2 Mini ESP32-S2 board.
+description: Install BitFloppy firmware on a supported Lolin S2 Mini ESP32-S2 board.
 ---
 
 # BitFloppy Board Flashing Guide
 
-This guide provides comprehensive instructions for flashing firmware to BitFloppy ESP32-S2 boards using multiple methods.
+Install BitFloppy firmware with the method that best fits your setup.
 
 ## 📋 Quick Navigation
 
-- **[🏠 Main Project](../README.md)** - Project overview and development information
-- **[👤 User Guide](index.md)** - Complete user manual and operations
-- **[💾 Firmware Binaries](binaries/)** - Download pre-built firmware
-- **[🕊️ Sparrow Wallet Integration](sparrow.md)** - Use with Sparrow Wallet
+- **[🏠 Main Project](../README.md)** - Project overview
+- **[👤 User Guide](user-guide.md)** - Device workflow and file states
+- **[💾 Firmware Binaries](binaries/)** - Pre-built firmware
+- **[🕊️ Sparrow Wallet Integration](sparrow.md)** - PSBT signing with Sparrow
 
 ## 📋 Table of Contents
 

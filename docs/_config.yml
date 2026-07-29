@@ -3,7 +3,7 @@ plugins:
   - jekyll-remote-theme
 
 title: BitFloppy
-description: A Bitcoin hardware wallet disguised as a 1.44 MB floppy disk.
+description: An offline Bitcoin signer built around a Lolin S2 Mini and a familiar floppy-disk workflow.
 url: https://valerio-vaccaro.github.io
 baseurl: /BitFloppy
 lang: en

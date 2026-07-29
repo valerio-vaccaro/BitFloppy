@@ -1,12 +1,12 @@
 ---
 layout: default
 title: User guide
-description: Learn how BitFloppy initializes, unlocks, signs PSBTs, and stores Bitcoin wallet data.
+description: A concise guide to BitFloppy states, files, and offline PSBT signing.
 ---
 
 # User guide
 
-BitFloppy updates its status every time the board restarts. When it is ready, it exposes a 1.44 MB mass-storage drive containing Bitcoin wallet files.
+On startup, BitFloppy creates a 1.44 MB USB storage drive containing the files needed for its wallet workflow.
 
 > **Security notice:** BitFloppy is a proof of concept. Use testnet or signet only—never real funds.
 
@@ -21,7 +21,7 @@ BitFloppy updates its status every time the board restarts. When it is ready, it
 
 ## Files on the drive
 
-The device can create `network.txt`, `log.txt`, and `README.txt`. In its unlocked state, it can also show `mnemonic.txt` and `passphrase.txt`.
+The device creates `network.txt`, `log.txt`, and `README.txt`. When unlocked, it also exposes `mnemonic.txt` and `passphrase.txt`.
 
 The `bip44`, `bip49`, and `bip84` folders contain derived addresses, change addresses, extended public keys, and—only while unlocked—private key material.
 
