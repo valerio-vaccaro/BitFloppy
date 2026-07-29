@@ -17,8 +17,8 @@ description: Learn how BitFloppy turns a Lolin S2 Mini board into an offline Bit
   </div>
   <div class="floppy-stage">
     <figure class="floppy-photo">
-      <img src="images/lolin_s2_mini.jpg" alt="Lolin S2 Mini board used by BitFloppy">
-      <figcaption>BITFLOPPY HARDWARE // Lolin S2 Mini</figcaption>
+      <img src="images/bitfloppy-retro-room.jpg" alt="Retro pixel-art room featuring the BitFloppy Bitcoin wallet">
+      <figcaption>BITFLOPPY // OFFLINE BY DESIGN</figcaption>
     </figure>
   </div>
 </section>
@@ -44,4 +44,4 @@ description: Learn how BitFloppy turns a Lolin S2 Mini board into an offline Bit
   </div>
 </section>
 
-<a class="artwork-link" href="https://share.gemini.google/anlrDArunQ5I" target="_blank" rel="noopener">OPEN THE BITFLOPPY ARTWORK REFERENCE ↗</a>
+<a class="artwork-link" href="https://gemini.google.com/share/ced1272e9f8f?skid=157f95c2-37d2-4c18-a283-8538492fca95" target="_blank" rel="noopener">OPEN THE ORIGINAL BITFLOPPY ARTWORK ↗</a>
